@@ -13,15 +13,21 @@ window.addEventListener('resize', () => {
 });
 
 const bowImage = new Image();
-bowImage.src = 'moño.png'; // Asegúrate de tener moño.png en la misma carpeta
+bowImage.src = 'moño.png'; // Imagen del moño
 
 let SCALE = 1;
-const USER_SCALE = 2; // 🔧 Cambia este valor para hacer el moño más grande o pequeño
+const USER_SCALE = 1.5; // Cambia esto para hacer el moño más grande o pequeño
 
 function updateScale() {
   const maxMoñoSize = Math.min(window.innerWidth, window.innerHeight) * 0.8;
   const imageMaxDim = Math.max(bowImage.width, bowImage.height);
   SCALE = (maxMoñoSize / imageMaxDim) * USER_SCALE;
+}
+
+// Ajustar STEP según el dispositivo
+let STEP = 5;
+if (window.innerWidth < 768) {
+  STEP = 7; // Menos partículas en móviles
 }
 
 let particles = [];
@@ -39,9 +45,8 @@ bowImage.onload = () => {
   const imgData = tctx.getImageData(0, 0, bowImage.width, bowImage.height);
   const data = imgData.data;
 
-  const STEP = 8.5;
   for (let y = 0; y < bowImage.height; y += STEP) {
-  for (let x = 0; x < bowImage.width; x += STEP) {
+    for (let x = 0; x < bowImage.width; x += STEP) {
       let index = (y * bowImage.width + x) * 4 + 3;
       if (data[index] > 128) {
         let posX = (x - bowImage.width / 2) * SCALE;
