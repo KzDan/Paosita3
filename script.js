@@ -25,7 +25,7 @@ function updateScale() {
 }
 
 // Ajustar STEP según el dispositivo
-let STEP = 5;
+let STEP = 6;
 if (window.innerWidth < 768) {
   STEP = 2; // Menos partículas en móviles
 }
