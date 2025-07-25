@@ -15,8 +15,8 @@ window.addEventListener('resize', () => {
 const bowImage = new Image();
 bowImage.src = 'moño.png'; // Imagen del moño
 
-let SCALE = 1;
-const USER_SCALE = 1.5; // Cambia esto para hacer el moño más grande o pequeño
+let SCALE = 2;
+const USER_SCALE = 3; // Cambia esto para hacer el moño más grande o pequeño
 
 function updateScale() {
   const maxMoñoSize = Math.min(window.innerWidth, window.innerHeight) * 0.8;
